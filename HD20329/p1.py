@@ -2,11 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import juliet
 import os
-from exotoolbox import plots, utils
+from exotoolbox import plots
 import astropy.units as u
 import matplotlib.gridspec as gd
-from glob import glob
-import pickle
 from utils import computeRMS
 import multiprocessing
 multiprocessing.set_start_method('fork')
@@ -42,7 +40,7 @@ tc1 = np.random.normal(tc, tc_err, 10000) + (cycle*np.random.normal(per, per_err
 ## Planetary priors
 par_P = ['P_p1', 't0_p1', 'p_p1', 'b_p1', 'q1_' + '_'.join(instruments), 'q2_' + '_'.join(instruments), 'rho', 'ecc_p1', 'omega_p1']
 dist_P = ['normal', 'normal', 'normal', 'normal', 'uniform', 'uniform', 'normal', 'fixed', 'fixed']
-hyper_P = [[per, 10*per_err], [np.median(tc1), 10*np.std(tc1)], [rprs, 10*rprs_err], [bb, 10*bb_err], [0., 1.], [0., 1.], [rho_st, rho_st_err], 0., 90.]
+hyper_P = [[per, per_err], [np.median(tc1), np.std(tc1)], [rprs, 5*rprs_err], [bb, 5*bb_err], [0., 1.], [0., 1.], [rho_st, rho_st_err], 0., 90.]
 
 ## Instrumental priors
 par_ins, dist_ins, hyper_ins = [], [], []
