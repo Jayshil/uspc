@@ -32,7 +32,7 @@ rho_gmcm3 = np.random.normal(0.879, 0.068, 100000) * u.g / u.cm**3
 rho_kgm3 = rho_gmcm3.to(u.kg / u.m**3)
 rho_st, rho_st_err = np.nanmedian(rho_kgm3.value), np.nanstd(rho_kgm3.value)
 
-## Computing eclipse time for TESS epoch
+## Computing transit time for TESS epoch
 cycle = round((tim_all[instruments[-1]][-1] - tc)/per)
 tc1 = np.random.normal(tc, tc_err, 10000) + (cycle*np.random.normal(per, per_err, 10000))
 
