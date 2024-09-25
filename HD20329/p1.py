@@ -28,19 +28,17 @@ bb, bb_err = 0.826, np.sqrt((0.017**2) + (0.016**2))
 rprs, rprs_err = 0.0139, np.sqrt((0.0005**2) + (0.0005**2))
 
 # Stellar parameters (It is derived from _stellar_ analysis by Murgas et al. 2022; this is NOT transit density)
-rho_gmcm3 = np.random.normal(0.879, 0.068, 100000) * u.g / u.cm**3
-rho_kgm3 = rho_gmcm3.to(u.kg / u.m**3)
-rho_st, rho_st_err = np.nanmedian(rho_kgm3.value), np.nanstd(rho_kgm3.value)
+rho_st, rho_st_err = 0.879*1e3, 0.068*1e3
 
 ## Computing transit time for TESS epoch
-cycle = round((tim_all[instruments[-1]][-1] - tc)/per)
-tc1 = np.random.normal(tc, tc_err, 10000) + (cycle*np.random.normal(per, per_err, 10000))
+cycle = round((tim_all[instruments[-2]][0] - tc)/per)
+tc1, tc1_err = tc + (cycle*per), tc_err + (cycle*per_err)
 
 # Priors
 ## Planetary priors
 par_P = ['P_p1', 't0_p1', 'p_p1', 'b_p1', 'q1_' + '_'.join(instruments), 'q2_' + '_'.join(instruments), 'rho', 'ecc_p1', 'omega_p1']
 dist_P = ['normal', 'normal', 'normal', 'normal', 'uniform', 'uniform', 'normal', 'fixed', 'fixed']
-hyper_P = [[per, per_err], [np.median(tc1), np.std(tc1)], [rprs, 5*rprs_err], [bb, 5*bb_err], [0., 1.], [0., 1.], [rho_st, rho_st_err], 0., 90.]
+hyper_P = [[per, per_err], [tc1, tc1_err], [rprs, 5*rprs_err], [bb, 5*bb_err], [0., 1.], [0., 1.], [rho_st, rho_st_err], 0., 90.]
 
 ## Instrumental priors
 par_ins, dist_ins, hyper_ins = [], [], []
