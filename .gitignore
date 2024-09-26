@@ -164,8 +164,12 @@ cython_debug/
 Data/PDCSAP
 Data/TPFs
 Data/PLD
+Data/LavaPlanets
 
 HD20329/Analysis
 HD213885/Analysis
+Zilinskas/Analysis
 
 *DS_Store
+*.fits
+*.VOTable
