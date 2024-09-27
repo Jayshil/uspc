@@ -3,7 +3,8 @@ import juliet
 import os
 
 #target = 'HD 20329'
-target = 'HD 213885'
+#target = 'HD 213885'
+target = 'TOI-1807'
 
 tim, fl, fle = juliet.utils.get_all_TESS_data(target)
 
