@@ -32,7 +32,7 @@ rho_st, rho_st_err = 0.879*1e3, 0.068*1e3
 
 ## Computing transit time for TESS epoch
 cycle = round((tim_all[instruments[-2]][0] - tc)/per)
-tc1, tc1_err = tc + (cycle*per), tc_err + (cycle*per_err)
+tc1, tc1_err = tc + (cycle*per), np.sqrt(tc_err + (cycle*per_err))
 
 # Priors
 ## Planetary priors
