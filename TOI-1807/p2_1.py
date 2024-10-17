@@ -10,7 +10,7 @@ multiprocessing.set_start_method('fork')
 # Transit+PC only analysis
 
 instruments = ['TESS22', 'TESS23', 'TESS49', 'TESS76']
-pout = os.getcwd() + '/TOI-1807/Analysis/PhaseWoOffset'
+pout = os.getcwd() + '/TOI-1807/Analysis/PhaseWoOffset1'
 
 # Loading the data
 tim_all, fl_all, fle_all = {}, {}, {}
@@ -41,9 +41,9 @@ dist_P = ['normal', 'normal', 'truncatednormal', 'truncatednormal', 'uniform', '
 hyper_P = [[per, per_err], [tc1, tc1_err], [rprs, 3*rprs_err, 0., 1.], [bb, 3*bb_err, 0., 1.], [0., 1.], [0., 1.], [rho_st, rho_st_err], 0., 90.]
 
 ## Phase curve priors
-par_pc = ['fp_p1', 'phaseoffset_p1']#, 't_secondary_p1']
-dist_pc = ['uniform', 'fixed']#, 'normal']
-hyper_pc = [[0.e-6, 500.e-6], 0.]#, [tc2, tc2_err]]
+par_pc = ['fp_p1', 'phaseoffset_p1', 't_secondary_p1']
+dist_pc = ['uniform', 'fixed', 'normal']
+hyper_pc = [[0.e-6, 500.e-6], 0., [tc2, tc2_err]]
 
 ## Instrumental priors
 par_ins, dist_ins, hyper_ins = [], [], []
@@ -66,7 +66,7 @@ priors = juliet.utils.generate_priors(params=par_tot, dists=dist_tot, hyperps=hy
 
 # And, the juliet analysis
 dataset = juliet.load(priors=priors, t_lc=tim_all, y_lc=fl_all, yerr_lc=fle_all, GP_regressors_lc=tim_all, out_folder=pout)
-res = dataset.fit(sampler='dynesty', nthreads=8, light_travel_delay=True, stellar_radius=0.690)
+res = dataset.fit(sampler='dynesty', nthreads=8)#, light_travel_delay=True, stellar_radius=0.690)
 
 
 # Let's plot some cool results!

@@ -25,12 +25,12 @@ ar, ar_err = 3.8, 0.2
 bb, bb_err = 0.53, np.sqrt((0.09**2) + (0.11**2))
 rprs, rprs_err = 0.0182, 0.0006
 
-# Stellar parameters (It is derived from _stellar_ analysis by Espinoza et al. 2020; this is NOT transit density)
+# Stellar parameters (It is derived from _stellar_ analysis by Nardiello et al. 2022; this is NOT transit density)
 rho_st, rho_st_err = 2.4*1e3, 0.4*1e3
 
 ## Computing transit time for TESS epoch
 cycle = round((tim_all[instruments[-1]][-1] - tc)/per)
-tc1, tc1_err = tc + (cycle*per), np.sqrt(tc_err + (cycle*per_err))
+tc1, tc1_err = tc + (cycle*per), np.sqrt(tc_err**2 + (cycle*per_err)**2)
 
 # Priors
 ## Planetary priors
