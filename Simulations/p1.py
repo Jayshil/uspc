@@ -84,7 +84,7 @@ gs = gd.GridSpec(2,1, height_ratios=[2,1])
 
 # Top panel
 ax1 = plt.subplot(gs[0])
-ax1.errorbar(tim[instrument], fl[instrument], yerr=fle[instrument], fmt='.', alpha=0.3)
+ax1.errorbar(tim[instrument], fl[instrument], yerr=fle[instrument], fmt='.')#, alpha=0.3)
 ax1.plot(tim[instrument], model, c='k', zorder=100)
 ax1.set_ylabel('Relative Flux')
 ax1.set_xlim(np.min(tim[instrument]), np.max(tim[instrument]))
@@ -92,7 +92,7 @@ ax1.xaxis.set_major_formatter(plt.NullFormatter())
 
 # Bottom panel
 ax2 = plt.subplot(gs[1])
-ax2.errorbar(tim[instrument], (fl[instrument]-model)*1e6, yerr=fle[instrument]*1e6, fmt='.', alpha=0.3)
+ax2.errorbar(tim[instrument], (fl[instrument]-model)*1e6, yerr=fle[instrument]*1e6, fmt='.')#, alpha=0.3)
 ax2.axhline(y=0.0, c='black', ls='--', zorder=100)
 ax2.set_ylabel('Residuals (ppm)')
 ax2.set_xlabel('Time (BJD)')
