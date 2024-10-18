@@ -14,8 +14,8 @@ import os
 # Its expected depth is: 39.7 ppm -- so, to reach 3-sigma pecision we need to reach 13.23 ppm in 1 transit duration
 # For that we will need ~30 observations (because 70 / np.sqrt(30) = 12.78)
 # Idealised case: in this case, we will assume that we already observed ~30 observations and made an average of all of them
-# So, the 1 min precision in each light curve would be 350 / np.sqrt(30) = 63.9 ppm; 350 / np.sqrt(40) = 55.34
-# We will simulate 1 light curve with 1 min cadence and precision of 63.9 ppm; 55.34
+# So, the 1 min precision in each light curve would be 350 / np.sqrt(30) = 63.9 ppm; 350 / np.sqrt(40) = 55.34; 350 / np.sqrt(35) = 59.16
+# We will simulate 1 light curve with 1 min cadence and precision of 63.9 ppm; 55.34 ppm; 59.16 ppm
 # Let's see how much we can extract
 pout = os.getcwd() + '/Simulations/Analysis/Idealised1807_30Obs'
 fpfs = 39.7*1e-6
