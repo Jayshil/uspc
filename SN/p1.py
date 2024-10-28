@@ -53,19 +53,22 @@ for i in range(len(name)):
             teq[i] = np.nan
 
 idx = ~np.isnan(teq)
+idx[np.where(teq == 0.)] = False
 
 # Removing all NaN values
 name1, per1, rprs1, ar1 = name[idx], per[idx], rprs_comps[idx], ar_comps[idx]
 rp1 = ((rprs_comps[idx] * rst[idx] * u.R_sun).to(u.R_earth)).value
 a1 = ((ar_comps[idx] * rst[idx] * u.R_sun).to(u.au)).value
+teq1, teff1 = teq[idx], teff[idx]
 gmag1, mp1 = gmag[idx], mp[idx]
 
-print(len(name1), len(per1), len(rprs1), len(ar1), len(rp1), len(a1), len(gmag1), len(mp1))
+print(len(name1), len(per1), len(rprs1), len(ar1), len(rp1), len(a1), len(teq1), len(teff1), len(gmag1), len(mp1))
 
 # Saving the data
 f1 = open(os.getcwd() + '/SN/Analysis/planetary_data.dat', 'w')
-f1.write('#Name\tPeriod\tRpRs\ta/Rs\tRpE\taAU\tGmag\tMpE\n')
+f1.write('#Name\tPeriod\tRpRs\ta/Rs\tRpE\taAU\tTeqP\tTeffS\tGmag\tMpE\n')
 for i in range(len(name1)):
     f1.write(str(name1[i]) + '\t' + str(per1[i]) + '\t' + str(rprs1[i]) + '\t' + str(ar1[i]) + \
-             str(rp1[i]) + '\t' + str(a1[i]) + '\t' + str(gmag1[i]) + '\t' + str(mp1[i]) + '\n')
+             str(rp1[i]) + '\t' + str(a1[i]) + '\t' + str(teq1[i]) + '\t' + str(teff1[i]) + '\t' + \
+             str(gmag1[i]) + '\t' + str(mp1[i]) + '\n')
 f1.close()
