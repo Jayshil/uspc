@@ -68,7 +68,7 @@ print(len(name1), len(per1), len(rprs1), len(ar1), len(rp1), len(a1), len(teq1),
 f1 = open(os.getcwd() + '/SN/Analysis/planetary_data.dat', 'w')
 f1.write('#Name\tPeriod\tRpRs\ta/Rs\tRpE\taAU\tTeqP\tTeffS\tGmag\tMpE\n')
 for i in range(len(name1)):
-    f1.write(str(name1[i]) + '\t' + str(per1[i]) + '\t' + str(rprs1[i]) + '\t' + str(ar1[i]) + \
+    f1.write(str(name1[i]) + '\t' + str(per1[i]) + '\t' + str(rprs1[i]) + '\t' + str(ar1[i]) + '\t' + \
              str(rp1[i]) + '\t' + str(a1[i]) + '\t' + str(teq1[i]) + '\t' + str(teff1[i]) + '\t' + \
              str(gmag1[i]) + '\t' + str(mp1[i]) + '\n')
 f1.close()
