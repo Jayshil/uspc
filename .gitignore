@@ -177,3 +177,5 @@ Zilinskas/Analysis
 *DS_Store
 *.fits
 *.VOTable
+*.pdf
+*.csv
